@@ -1,0 +1,25 @@
+{
+    "name": "vscode-ssql",
+    "displayName": "SuperSQL",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.55.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ssql",
+            "aliases": ["SuperSQL", "ssql"],
+            "extensions": [".ssql"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ssql",
+            "scopeName": "source.ssql",
+            "path": "./syntaxes/ssql.tmLanguage.json"
+        }]
+    }
+}
