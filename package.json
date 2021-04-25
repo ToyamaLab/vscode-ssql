@@ -19,7 +19,7 @@
         "grammars": [{
             "language": "ssql",
             "scopeName": "source.ssql",
-            "path": "./syntaxes/ssql.tmLanguage.json"
+            "path": "./syntaxes/ssql.tmLanguage.plist"
         }]
     }
 }
