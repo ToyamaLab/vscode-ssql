@@ -517,11 +517,12 @@
 					<string>}</string>
 					<key>contentName</key>
 					<string>markup.underline</string>
+					<!-- TODO: better decorator highlighting -->
 					<!-- <key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#xxx</string>
+							<string>#strings</string>
 						</dict>
 					</array> -->
 				</dict>
@@ -565,25 +566,12 @@
 				</dict>
 				<!-- End of import from vscode-mssql -->
 				<dict>
-					<key>captures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.begin.sql</string>
-						</dict>
-						<key>2</key>
-						<dict>
-							<key>name</key>
-							<string>punctuation.definition.string.end.sql</string>
-						</dict>
-					</dict>
-					<key>comment</key>
-					<string>this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.</string>
-					<key>match</key>
-					<string>(N)?(')[^']*(')</string>
-					<key>name</key>
-					<string>string.quoted.single.sql</string>
+					<key>include</key>
+					<string>#comments</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#strings</string>
 				</dict>
 			</array>
 		</dict>
