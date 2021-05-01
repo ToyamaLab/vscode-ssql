@@ -5,9 +5,6 @@
 	<key>fileTypes</key>
 	<array>
 		<string>ssql</string>
-		<string>sql</string>
-		<string>ddl</string>
-		<string>dml</string>
 	</array>
 	<key>keyEquivalent</key>
 	<string>^~S</string>
@@ -15,6 +12,48 @@
 	<string>SuperSQL</string>
 	<key>patterns</key>
 	<array>
+		<dict>
+			<key>match</key>
+			<string>(?i:foreach\s+)</string>
+			<key>name</key>
+			<string>keyword.other.ssql.clause.foreach</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?i:generate\s+(html|unity_dv))</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.ssql.clause.generate</string>
+				</dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.ssql.media</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?i:from)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.ssql.clause</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>text.tfe</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#tfe</string>
+				</dict>
+			</array>
+		</dict>
 		<dict>
 			<key>match</key>
 			<string>((?&lt;!@)@)\b(\w+)\b</string>
@@ -459,6 +498,95 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>tfe</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(@)(\s+)?({)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.tfe.at</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>}</string>
+					<key>contentName</key>
+					<string>markup.underline</string>
+					<!-- <key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#xxx</string>
+						</dict>
+					</array> -->
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(a|anchor|cross_tab|image|line|link|null)\b</string>
+					<key>name</key>
+					<string>support.function.ssql</string>
+				</dict>
+				<!-- Following SQL functions are imported from vscode-mssql -->
+				<!-- TODO: clean up -->
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(avg|checksum_agg|count|count_big|grouping|grouping_id|max|min|sum|stdev|stdevp|var|varp)\b</string>
+					<key>name</key>
+					<string>support.function.aggregate.sql</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(sysdatetime|sysdatetimeoffset|sysutcdatetime|current_time(stamp)?|getdate|getutcdate|datename|datepart|day|month|year|datefromparts|datetime2fromparts|datetimefromparts|datetimeoffsetfromparts|smalldatetimefromparts|timefromparts|datediff|dateadd|eomonth|switchoffset|todatetimeoffset|isdate)\b</string>
+					<key>name</key>
+					<string>support.function.datetime.sql</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(coalesce|nullif)\b</string>
+					<key>name</key>
+					<string>support.function.expression.sql</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(abs|acos|asin|atan|atn2|ceiling|cos|cot|degrees|exp|floor|log|log10|pi|power|radians|rand|round|sign|sin|sqrt|square|tan)\b</string>
+					<key>name</key>
+					<string>support.function.mathematical.sql</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?i)\b(ascii|char|charindex|concat|difference|format|left|len|lower|ltrim|nchar|nodes|patindex|quotename|replace|replicate|reverse|right|rtrim|soundex|space|str|string_agg|string_escape|string_split|stuff|substring|translate|trim|unicode|upper)\b</string>
+					<key>name</key>
+					<string>support.function.string.sql</string>
+				</dict>
+				<!-- End of import from vscode-mssql -->
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.begin.sql</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.string.end.sql</string>
+						</dict>
+					</dict>
+					<key>comment</key>
+					<string>this is faster than the next begin/end rule since sub-pattern will match till end-of-line and SQL files tend to have very long lines.</string>
+					<key>match</key>
+					<string>(N)?(')[^']*(')</string>
+					<key>name</key>
+					<string>string.quoted.single.sql</string>
+				</dict>
+			</array>
+		</dict>
 		<key>comments</key>
 		<dict>
 			<key>patterns</key>

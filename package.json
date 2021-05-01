@@ -1,5 +1,6 @@
 {
     "name": "vscode-ssql",
+    "publisher": "JunNemoto",
     "displayName": "SuperSQL",
     "description": "",
     "version": "0.0.1",
