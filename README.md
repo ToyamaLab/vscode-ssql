@@ -4,7 +4,7 @@ Welcome to SuperSQL Extension for Visual Studio Code. This is an extension for s
 
 For more information of SuperSQL, visit [here](http://ssql.db.ics.keio.ac.jp/).
 
-![Sample image of highlighting](https://www.db.ics.keio.ac.jp/ssql/DEMO/images/screenshot.png)
+![Sample image of highlighting](images/screenshot.png)
 
 ## Release Notes
 

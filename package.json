@@ -1,15 +1,19 @@
 {
     "name": "vscode-ssql",
-    "publisher": "JunNemoto",
+    "publisher": "ToyamaLab",
     "displayName": "SuperSQL",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
-        "vscode": "^1.55.0"
+        "vscode": "^1.49.0"
     },
     "categories": [
         "Programming Languages"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ToyamaLab/vscode-ssql.git"
+    },
     "contributes": {
         "languages": [{
             "id": "ssql",
