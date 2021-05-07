@@ -8,23 +8,63 @@
         "vscode": "^1.49.0"
     },
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Other"
     ],
+    "activationEvents": [
+		"onCommand:vscode-ssql.helloWorld"
+	],
+    "main": "./out/extension.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/ToyamaLab/vscode-ssql.git"
     },
     "contributes": {
-        "languages": [{
-            "id": "ssql",
-            "aliases": ["SuperSQL", "ssql"],
-            "extensions": [".ssql"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "ssql",
-            "scopeName": "source.ssql",
-            "path": "./syntaxes/ssql.tmLanguage.plist"
-        }]
-    }
+        "commands": [
+			{
+				"command": "vscode-ssql.helloWorld",
+				"title": "Hello World"
+			}
+		],
+        "languages": [
+            {
+                "id": "ssql",
+                "aliases": [
+                    "SuperSQL",
+                    "ssql"
+                ],
+                "extensions": [
+                    ".ssql"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "ssql",
+                "scopeName": "source.ssql",
+                "path": "./syntaxes/ssql.tmLanguage.plist"
+            }
+        ]
+    },
+    "scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"@types/vscode": "^1.55.0",
+		"@typescript-eslint/eslint-plugin": "^4.14.1",
+		"@typescript-eslint/parser": "^4.14.1",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	}
 }
