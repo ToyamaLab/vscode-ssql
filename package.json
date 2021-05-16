@@ -50,6 +50,65 @@
               "category": "SuperSQL"
             }
         ],
+        "configuration": {
+            "title": "SuperSQL",
+            "properties": {
+                "ssql.bringYourOwnJarFile": {
+                    "description": "SuperSQL Jar file path. If not specified, bundle version will be used.",
+                    "type": "string",
+                    "default": "",
+                    "scope": "resource"
+                },
+                "ssql.configFile": {
+                    "description": "Configuration file path. If not specified, .ssql on your home directory will be used.",
+                    "type": "string",
+                    "default": "",
+                    "scope": "resource"
+                },
+                "ssql.custom.db.driver": {
+                    "description": "Driver for database connection.",
+                    "type": "string",
+                    "default": "",
+                    "enum": ["", "postgresql", "sqlite", "mysql", "db2", "sqlserver"],
+                    "scope": "resource"
+                },
+                "ssql.custom.db.host": {
+                    "description": "Host name for database connection.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.db.hostPort": {
+                    "description": "Port number for database connection.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.db.name": {
+                    "description": "Database name for database connection.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.db.user": {
+                    "description": "User name for database connection.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.db.userPassword": {
+                    "description": "User's password for database connection.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.outputDirectory": {
+                    "description": "Output directory.",
+                    "type": "string",
+                    "default": ""
+                },
+                "ssql.custom.vastAdditionalOptions": {
+                    "description": "Additional options to pass the SSQL command. (e.g., -debug)",
+                    "type": "string",
+                    "default": ""
+                }
+            }
+        },
         "keybindings": [
             {
               "command": "ssql.exec",
