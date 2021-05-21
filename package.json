@@ -41,13 +41,13 @@
         ],
         "commands": [
             {
-              "command": "ssql.debug",
-              "title": "SSQL Debug"
+                "command": "ssql.debug",
+                "title": "SSQL Debug"
             },
             {
-              "command": "ssql.exec",
-              "title": "Execute SuperSQL",
-              "category": "SuperSQL"
+                "command": "ssql.exec",
+                "title": "Execute SuperSQL",
+                "category": "SuperSQL"
             }
         ],
         "configuration": {
@@ -69,52 +69,66 @@
                     "description": "Driver for database connection.",
                     "type": "string",
                     "default": "",
-                    "enum": ["", "postgresql", "sqlite", "mysql", "db2", "sqlserver"],
+                    "enum": [
+                        "",
+                        "postgresql",
+                        "sqlite",
+                        "mysql",
+                        "db2",
+                        "sqlserver"
+                    ],
                     "scope": "resource"
                 },
                 "ssql.custom.db.host": {
                     "description": "Host name for database connection.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.db.hostPort": {
                     "description": "Port number for database connection.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.db.name": {
                     "description": "Database name for database connection.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.db.user": {
                     "description": "User name for database connection.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.db.userPassword": {
                     "description": "User's password for database connection.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.outputDirectory": {
                     "description": "Output directory.",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 },
                 "ssql.custom.vastAdditionalOptions": {
                     "description": "Additional options to pass the SSQL command. (e.g., -debug)",
                     "type": "string",
-                    "default": ""
+                    "default": "",
+                    "scope": "resource"
                 }
             }
         },
         "keybindings": [
             {
-              "command": "ssql.exec",
-              "key": "ctrl+shift+e",
-              "mac": "cmd+shift+e",
-              "when": "editorTextFocus && editorLangId == 'ssql'"
+                "command": "ssql.exec",
+                "key": "ctrl+shift+e",
+                "mac": "cmd+shift+e",
+                "when": "editorTextFocus && editorLangId == 'ssql'"
             }
         ]
     },
