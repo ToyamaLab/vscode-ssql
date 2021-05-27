@@ -211,8 +211,10 @@ export function activate(context: vscode.ExtensionContext) {
 		const panel = findWebviewPanel(htmlFullPath);
 		if (panel) {
 			const webviewPanel: vscode.WebviewPanel = panel.panel;
-			webviewPanel.reveal(vscode.ViewColumn.Beside);
-			return webviewPanel;
+			// reveal() doesn't update its html contents, so disposes the panel and recreate it.
+			// webviewPanel.reveal(vscode.ViewColumn.Beside);
+			// return webviewPanel;
+			webviewPanel.dispose();
 		}
 
 		// if not found, create and return a new one.
