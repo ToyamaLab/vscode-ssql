@@ -141,6 +141,10 @@ export function activate(context: vscode.ExtensionContext) {
 
 		const config: vscode.WorkspaceConfiguration =
 			vscode.workspace.getConfiguration(SSQL_CONFIG_NAME);
+		// ! If outputDirctory is not set in settings.json(vscode), but the .ssql file has outdir setting, this preview will fail.
+		// Workaround: In the README,
+		// "To use the preview function when the output directory is specified in .ssql file,
+		// set config.custom.outputDirectory in the VS Code extension settings to match the output directory specified in .ssql file."
 		const outputDirPath: string =
 			config.custom.outputDirectory === ''
 				? path.dirname(file)
