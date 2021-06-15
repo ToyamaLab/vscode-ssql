@@ -41,10 +41,6 @@
         ],
         "commands": [
             {
-                "command": "ssql.debug",
-                "title": "SSQL Debug"
-            },
-            {
                 "command": "ssql.exec",
                 "title": "Execute SuperSQL",
                 "category": "SuperSQL"

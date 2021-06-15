@@ -79,18 +79,6 @@ function makeSSQLCommand(context: vscode.ExtensionContext, fileName: string) {
 }
 
 /**
- * Returns true if file extension is `.ssql`, false otherwise.
- * @returns boolean value
- */
-function canExecSSQL(): boolean {
-	const editor = vscode.window.activeTextEditor;
-	if (!editor) return false;
-
-	const fileExtension = path.extname(editor.document.fileName);
-	return fileExtension === '.ssql';
-}
-
-/**
  * Replaces local css file path with a special URI that VS Code can use to load.
  * https://code.visualstudio.com/api/extension-guides/webview#loading-local-content
  * @param  {vscode.Uri} htmlPath
@@ -118,17 +106,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const outputChannel = vscode.window.createOutputChannel(SSQL_VSCODE_CHANNEL);
 	let panelPaths: PanelPath[] | undefined = undefined;
 
-	const commandHandler = () => {
-		execSSQL();
-	};
-	context.subscriptions.push(
-		vscode.commands.registerCommand(SSQL_VSCODE_COMMAND, commandHandler)
-	);
-	vscode.workspace.onDidSaveTextDocument(() => {
-		if (canExecSSQL()) execSSQL();
-	});
-
-	function execSSQL() {
+	const execSSQL = () => {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) return;
 
@@ -176,7 +154,7 @@ export function activate(context: vscode.ExtensionContext) {
 				cssUri
 			);
 		});
-	}
+	};
 
 	/**
 	 * Converts file extension replacing `from` with `to`.
@@ -185,10 +163,10 @@ export function activate(context: vscode.ExtensionContext) {
 	 * @param  {string} to
 	 * @returns converted file name
 	 */
-	function convertFileExtension(fileName: string, from: string, to: string): string {
+	const convertFileExtension = (fileName: string, from: string, to: string): string => {
 		const regExp = new RegExp(`(.*)${from}`);
 		return fileName.replace(regExp, `$1${to}`);
-	}
+	};
 
 	/**
 	 * Returns the PanelPath instance where the panel's full path is equal to
@@ -196,10 +174,10 @@ export function activate(context: vscode.ExtensionContext) {
 	 * @param  {string} fullPath
 	 * @returns PanelPath instance
 	 */
-	function findWebviewPanel(fullPath: string): PanelPath | undefined {
+	const findWebviewPanel = (fullPath: string): PanelPath | undefined => {
 		if (!panelPaths) return undefined;
 		return panelPaths.find((panel) => panel.fullPath === fullPath);
-	}
+	};
 
 	/**
 	 * If there is already a panel with the same full path, then reveal it,
@@ -208,10 +186,10 @@ export function activate(context: vscode.ExtensionContext) {
 	 * @param  {string} outputDirPath
 	 * @returns vscode.WebviewPanel instance
 	 */
-	function revealOrCreatePanel(
+	const revealOrCreatePanel = (
 		htmlFullPath: string,
 		outputDirPath: string
-	): vscode.WebviewPanel {
+	): vscode.WebviewPanel => {
 		const panel = findWebviewPanel(htmlFullPath);
 		if (panel) {
 			const webviewPanel: vscode.WebviewPanel = panel.panel;
@@ -251,7 +229,17 @@ export function activate(context: vscode.ExtensionContext) {
 			context.subscriptions
 		);
 		return newVSCodePanel;
-	}
+	};
+
+	const commandHandler = () => {
+		execSSQL();
+	};
+	context.subscriptions.push(
+		vscode.commands.registerCommand(SSQL_VSCODE_COMMAND, commandHandler)
+	);
+	vscode.workspace.onDidSaveTextDocument(() => {
+		execSSQL();
+	});
 }
 
 export function deactivate() {}
