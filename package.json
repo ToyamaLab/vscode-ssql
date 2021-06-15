@@ -50,6 +50,14 @@
                 "category": "SuperSQL"
             }
         ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "ssql.exec",
+                    "when": "editorLangId == 'ssql'"
+                }
+            ]
+        },
         "configuration": {
             "title": "SuperSQL",
             "properties": {
