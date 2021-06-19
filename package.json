@@ -41,15 +41,19 @@
         ],
         "commands": [
             {
-                "command": "ssql.debug",
-                "title": "SSQL Debug"
-            },
-            {
                 "command": "ssql.exec",
                 "title": "Execute SuperSQL",
                 "category": "SuperSQL"
             }
         ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "ssql.exec",
+                    "when": "editorLangId == 'ssql'"
+                }
+            ]
+        },
         "configuration": {
             "title": "SuperSQL",
             "properties": {
