@@ -8,16 +8,11 @@ For more information of SuperSQL, visit [here](http://ssql.db.ics.keio.ac.jp/).
 
 ## Notes
 
-To use the preview function when the output directory is specified in .ssql file, set config.custom.outputDirectory in the VS Code extension settings to match the output directory specified in .ssql file.
+To use the preview function, make sure to set `config.custom.outputDirectory` in the VS Code extension settings even when the output directory is specified in .ssql file. If you set the different one in `config.custom.outputDirectory`, .ssql setting will be overwritten.
 
 e.g.)
-If you set `outdir` in .ssql as follows:
+If you want to use the preview and get the output in `/Users/path/to/outdir`, configure outputDirectory as follows:
 
-```.ssql
-outdir=/Users/path/to/outdir
-```
-
-You need to configure outputDirectory as follows:
 ![Notes - configure outputDirectory](images/configure_outputDirectory.png)
 
 ## Release Notes
