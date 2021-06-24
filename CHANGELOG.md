@@ -1,5 +1,9 @@
 # Change Log
 
+### 0.1.1
+
+Update the SuperSQL binary. ([6b7e91a](https://github.com/ToyamaLab/NewSSQL/commit/6b7e91a280e5a47ccefb336f9cf894556687da72))
+
 ### 0.1.0
 
 Support the following new features.
