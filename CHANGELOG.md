@@ -1,9 +1,21 @@
 # Change Log
 
-All notable changes to the "vscode-ssql" extension will be documented in this file.
+### 0.1.1
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+Update the SuperSQL binary. ([6b7e91a](https://github.com/ToyamaLab/NewSSQL/commit/6b7e91a280e5a47ccefb336f9cf894556687da72))
 
-## [Unreleased]
+### 0.1.0
 
-- Initial release
+Support the following new features.
+
+- Execute SuperSQL in the extension using the bundled or specified binary.
+- Preview the results of above execution.
+- Configure SuperSQL settings in the extension.
+
+### 0.0.2
+
+Fix to use comments in TFE.
+
+### 0.0.1
+
+Initial alpha release of SuperSQL extension.
