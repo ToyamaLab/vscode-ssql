@@ -19,6 +19,22 @@ interface PanelPath {
 	panel: vscode.WebviewPanel;
 }
 
+function fetchOutputDirectory() {
+	const config: vscode.WorkspaceConfiguration =
+		vscode.workspace.getConfiguration(SSQL_CONFIG_NAME);
+	const dirPath: string = config.custom.outputDirectory;
+	if (dirPath === '') {
+		return null;
+	}
+	
+	if (!dirPath.startsWith('~')) {
+		return dirPath;
+	}
+
+	const homeDir = process.env[process.platform === 'win32' ? 'USERPROFILE' : 'HOME'];
+	return dirPath.replace('~', `${homeDir}`);
+}
+
 /**
  * @param  {vscode.ExtensionContext} context
  * @param  {string} fileName
@@ -69,8 +85,9 @@ function makeSSQLCommand(context: vscode.ExtensionContext, fileName: string) {
 		password = " -password " + config.custom.db.userPassword;
 	}
 
-	if (config.custom.outputDirectory !== '') {
-		outputDirectory = " -d " + config.custom.outputDirectory;
+	const outputDir: string | null = fetchOutputDirectory();
+	if (outputDir) {
+		outputDirectory = " -d " + outputDir;
 	}
 
 	const command = `${JAVA_COMMAND}${jarFile} ${SSQL_CLASS} -f ${fileName}${configFile}${driver}${host}${port}${db}${user}${password}${outputDirectory} ${config.custom.vastAdditionalOptions}`;
@@ -123,10 +140,7 @@ export function activate(context: vscode.ExtensionContext) {
 		// Workaround: In the README,
 		// "To use the preview function when the output directory is specified in .ssql file,
 		// set config.custom.outputDirectory in the VS Code extension settings to match the output directory specified in .ssql file."
-		const outputDirPath: string =
-			config.custom.outputDirectory === ''
-				? path.dirname(file)
-				: config.custom.outputDirectory;
+		const outputDirPath: string = fetchOutputDirectory() ?? path.dirname(file);
 		// extract the filename from full path. e.g.) '/path/to/dir/file.ssql' => 'file.ssql'
 		const ssqlFileName = path.basename(file);
 		// todo: another output file format
