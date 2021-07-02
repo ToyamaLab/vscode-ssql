@@ -23,6 +23,8 @@ If you want to use the preview and get the output in `/Users/path/to/outdir`, co
 
 ![Notes - configure outputDirectory](images/configure_outputDirectory.png)
 
+Also, the preview that requires JavaScript (e.g., pagenation) currently does not work. See the results in your browser.
+
 ## Release Notes
 
 See [this](CHANGELOG.md) change log.
