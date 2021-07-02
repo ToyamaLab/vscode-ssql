@@ -1,5 +1,10 @@
 # Change Log
 
+### 0.1.2
+
+- Fix to use tilde as an abbreviation of the user's home directory in the output directory setting.
+- Fix to copy JavaScript files into the output directory.
+
 ### 0.1.1
 
 Update the SuperSQL binary. ([6b7e91a](https://github.com/ToyamaLab/NewSSQL/commit/6b7e91a280e5a47ccefb336f9cf894556687da72))
