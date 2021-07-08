@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const JAVA_COMMAND = 'java';
+const SSQL_VSCODE_LANG_ID = 'ssql';
 const SSQL_VSCODE_CHANNEL = 'SuperSQL';
 const SSQL_VSCODE_COMMAND = 'ssql.exec';
 const SSQL_CONFIG_NAME = 'ssql';
@@ -126,6 +127,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const execSSQL = () => {
 		const editor = vscode.window.activeTextEditor;
 		if (!editor) return;
+		if (editor.document.languageId !== SSQL_VSCODE_LANG_ID) return;
 
 		const file = editor.document.fileName;
 		const command = makeSSQLCommand(context, file);
